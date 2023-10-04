@@ -1,0 +1,107 @@
+<!-- This is to indicate we have an HTML document -->
+<!DOCTYPE html>
+
+<!-- All our code goes within this html tag-->
+<html>
+
+<!-- All the metadata and packages/tools we'll use go in the head.>
+<head>
+
+<!-- The charset attribute specifies the character encoding for the HTML document.-->
+<meta charset="utf-8" />
+
+<!-- The title of your page, which will appear in the browser tab -->
+<title>NYC Housing Flood Risk</title>  
+
+<!-- The size of the viewport vs the rendered page -->
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+<!-- We are going to call the Mapbox GL javascript library, which will allow us to use its functionality -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+
+<!-- Alongside this, we are going to bring in the Mapbox GL stylesheet -->
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+
+<!-- You'll be creating this file in a bit -->
+<link href='style.css' rel='stylesheet' />
+
+<!-- This allows us to bring in new fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<!-- The body contains the actual content of a page -->
+<body>
+
+<!-- The "div" tag delineates a "division" or section of the HTML page.-->
+  <div id="map">
+  </div>
+
+
+  	<div class="map-overlay top">
+  	<div class="map-overlay-inner">
+  	<h2>Public and Affordable Housing Flood Risk</h2>
+    <h3> This map shows locations of New York City Housing Developments (NYCHA) housing developments in the context of the 2012 Hurricane Sandy storm surge.
+
+  	</div>
+
+
+  	</div>
+
+
+
+
+<script>
+// You'll be inserting your JS code to initialize your map here
+
+ mapboxgl.accessToken = 'pk.eyJ1Ijoia2NoZXoiLCJhIjoiY2xuMXU4ZDd0MDF1dDJrbzQ1N3h6MG16ZyJ9.RUgGIqy5XQdcTlx9_rzdKA'
+ const map = new mapboxgl.Map({
+  container: 'map', //container id
+style: 'mapbox://styles/kchez/cln6a5pgk071n01qr6yy3e8fc',
+center: [-73.935242, 40.730610], // The convention for coordinates is  typically [long, lat]
+    zoom: 12,
+    maxzoom: 18,
+    minzoom: 12 // The zoom level can be any decimal number
+    });
+
+map.on('load',function(){
+  // Give your layer's source a nickname you'll remember easily. I've called my source `sandy_layer`
+  map.addSource('sandy_layer',{
+    'type':'vector',
+    'url': 'mapbox://kchez.d9pd5qds'
+  });
+   map.addLayer(
+   {
+    'id':'flood_zones',
+    'type':'fill',
+    'source':'sandy_layer',
+    'source-layer':'Sandy_Inundation_Zone-43qhhb', //notice its 'source-layer' here, not 'source'
+    'paint':{
+      'fill-color':'#00158f',
+      'fill-opacity': 0.5
+    }
+  });
+    map.addSource('nycha_layer',{
+    'type':'vector',
+    'url': 'mapbox://kchez.6pf04d0a'
+  });
+   map.addLayer(
+   {
+    'id':'nycha',
+    'type':'fill',
+    'source':'nycha_layer',
+    'source-layer':'Map_of_NYCHA_Developments-2xxmtw', //notice its 'source-layer' here, not 'source'
+    'paint':{
+      'fill-color':'#81168f',
+      'fill-opacity': 0.5
+    }
+  })
+});
+
+
+
+// Within a script, you comment using two backslashes.
+</script>
+
+</body>
+
+</html>
