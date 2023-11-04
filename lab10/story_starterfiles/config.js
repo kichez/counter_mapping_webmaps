@@ -15,11 +15,11 @@ var config = {
     footer: 'Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.',
     chapters: [
         {
-            id: 'slug-style-id',
+            id: 'my-story-chapter-1',
             alignment: 'left',
             hidden: false,
             title: 'New York City Flood Level Predictions',
-            image: 'images/source.png',
+            image: 'images/sandyflood.png',
             description: 'NYC Flooding levels predicted for 2050 and 2100, overlaid with public housing locations.',
             location: {
                 center: [-73.98354, 40.73795],
@@ -33,7 +33,7 @@ var config = {
             onChapterEnter: [
                 {
                     layer: 'pluto-hous-type-master-featu-7b5u7f',
-                    opacity: 1,
+                    opacity: 0,
                     duration: 0
                 }
             ],
@@ -46,17 +46,17 @@ var config = {
         },
         
           {
-            id: 'slug-style-id',
+            id: 'my-story-chapter-2',
             alignment: 'left',
             hidden: false,
             title: 'Red Hook Housing',
-            image: 'images/redhook1.jpg',
+            image: 'images/redhook1.png',
             description: 'The Red Hook Houses, a 1940s-era public housing development, was devestated by storm surge during Hurricane Sandy. Residents were without power for weeks after the hurricane. Federal funding has supported award-winning building renovations which are in place today. ',
             location: {
-                center: [-74.01280, 40.67479],
-                zoom: 16.36,
-                pitch: 67.05,
-                bearing: 0
+                center: [-74.00922, 40.67452],
+                zoom: 15.00,
+                pitch: 19.50,
+                bearing: 0.00
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
